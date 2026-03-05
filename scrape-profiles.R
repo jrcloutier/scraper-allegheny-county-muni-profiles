@@ -397,8 +397,8 @@ dat <- scrape_all_municipalities()
 
 lookup <- dat |>
   select(
-    muni_code,
     municipality,
+    muni_code,
     school_district,
     school_code,
     county_council_district,
