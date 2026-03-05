@@ -414,7 +414,7 @@ calculate_changes <- function(data) {
 #' Weekly snapshots are always recorded for consistent time series tracking
 #' @param output_file Path to the output CSV file
 #' @return Data frame with updated time series
-update_real_estate_time_series <- function(output_file = here("data", "muni-real-estate-time-series.csv")) {
+update_real_estate_time_series <- function(output_file = here("data", "tax-base.csv")) {
   cat("=== Real Estate Values Time Series Update ===\n")
   cat("Starting scrape at:", as.character(Sys.time()), "\n\n")
 
@@ -525,6 +525,6 @@ if (!interactive() && sys.nframe() == 0) {
   cat("  1. Scrape current 'Value As Of' values from all 130 municipalities\n")
   cat("  2. Extract the 'Value As Of' date from each profile\n")
   cat("  3. Append new data to the historical dataset (avoiding duplicates)\n")
-  cat("  4. Save to data/muni-real-estate-time-series.csv\n\n")
+  cat("  4. Save to data/tax-base.csv\n\n")
   cat("Note: The script includes a 1-second delay between requests.\n")
 }

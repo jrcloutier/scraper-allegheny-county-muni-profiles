@@ -349,9 +349,9 @@ scrape_all_millage <- function(years = 2018:2025) {
   cat("\nSTEP 4: Saving files...\n")
 
   # Load existing data if files exist, otherwise create empty dataframes
-  muni_file <- here("data", "muni-millage-rates.csv")
-  school_file <- here("data", "school-millage-rates.csv")
-  county_file <- here("data", "county-millage-rates.csv")
+  muni_file <- here("data", "millage-muni.csv")
+  school_file <- here("data", "millage-school.csv")
+  county_file <- here("data", "millage-county.csv")
 
   # Municipal millage - preserve existing data
   if (file.exists(muni_file)) {
@@ -400,9 +400,9 @@ scrape_all_millage <- function(years = 2018:2025) {
 
   cat("\n=== SCRAPING COMPLETE ===\n")
   cat("Output files:\n")
-  cat("  - data/muni-millage-rates.csv\n")
-  cat("  - data/school-millage-rates.csv\n")
-  cat("  - data/county-millage-rates.csv\n")
+  cat("  - data/millage-muni.csv\n")
+  cat("  - data/millage-school.csv\n")
+  cat("  - data/millage-county.csv\n")
   cat("\nYears included:\n")
   cat("  - Municipal:", paste(sort(unique(muni_data$tax_year)), collapse = ", "), "\n")
   cat("  - School:", paste(sort(unique(school_data$tax_year)), collapse = ", "), "\n")

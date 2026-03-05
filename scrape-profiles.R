@@ -52,21 +52,8 @@ scrape_municipality <- function(muni_id) {
     legislative_district = NA,          # State house district
     congressional_district = NA,        # US congressional district
     council_of_government = NA,         # Council of governments membership
-    police_chief = NA,                  # Police department info
-    fire_chief = NA,                    # Fire chief name
-    ems_agency = NA,                    # Emergency medical services provider
-    sanitary_authority = NA,            # Sanitary authority name
     school_district = NA,               # School district name
-    contact_name = NA,                  # Municipal contact person
-    contact_address = NA,               # Municipal office address
-    contact_phone = NA,                 # Municipal office phone
-    median_property_value = NA,         # Median property value
-    certified_taxable_value = NA,       # Certified taxable property value
-    certified_exempt_value = NA,        # Certified tax-exempt property value
-    certified_purta_value = NA,         # Public Utility Realty Tax Act value
-    certified_all_real_estate = NA,     # Total real estate value
     square_miles = NA                   # Geographic area
-
   )
 
   tryCatch({
@@ -86,68 +73,10 @@ scrape_municipality <- function(muni_id) {
       result$school_district <- gsub("[º\u0095]|\\s+\\d+$", "", trimws(school_district))
     }
 
-    # Extract certified values using exact XPath selectors
-    result$certified_taxable_value <- as.numeric(gsub("[^0-9.]", "",
-      safe_extract(page, "//*[@id='no-more-tables']/table[1]/tbody/tr[1]/td[2]", "0")))
-
-    result$certified_exempt_value <- as.numeric(gsub("[^0-9.]", "",
-      safe_extract(page, "//*[@id='no-more-tables']/table[1]/tbody/tr[1]/td[3]", "0")))
-
-    result$certified_purta_value <- as.numeric(gsub("[^0-9.]", "",
-      safe_extract(page, "//*[@id='no-more-tables']/table[1]/tbody/tr[1]/td[4]", "0")))
-
-    result$certified_all_real_estate <- as.numeric(gsub("[^0-9.]", "",
-      safe_extract(page, "//*[@id='no-more-tables']/table[1]/tbody/tr[1]/td[5]", "0")))
-
-    # Extract contact information
-    contact_name <- safe_extract(page, "//div[@class='migratebox']//li[1]")
-    if (!is.na(contact_name)) {
-      result$contact_name <- trimws(contact_name)
-    }
-
-    contact_address <- safe_extract(page, "//div[@class='migratebox']//li[2]")
-    if (!is.na(contact_address)) {
-      result$contact_address <- trimws(gsub("\n", " ", contact_address))
-    }
-
-    contact_phone <- safe_extract(page, "//div[@class='migratebox']//li[contains(., 'Phone:')]")
-    if (!is.na(contact_phone)) {
-      result$contact_phone <- trimws(gsub("Phone:", "", contact_phone))
-    }
-
     # Extract additional fields using table-based XPath with exact b tag matches
     council_district <- safe_extract(page, "//td[b[text()='County Council District:']]/following-sibling::td")
     if (!is.na(council_district)) {
       result$county_council_district <- trimws(council_district)
-    }
-
-    # Extract and clean council representative
-    council_rep <- safe_extract(page, "//td[b[text()='Council Representative:']]/following-sibling::td")
-    if (!is.na(council_rep)) {
-      # Clean up excessive whitespace and remove any line breaks
-      result$council_representative <- gsub("\\s+", " ", trimws(council_rep))
-    }
-
-    # Extract and clean police chief info
-    police <- safe_extract(page, "//td[b[text()='Police Chief:']]/following-sibling::td")
-    if (!is.na(police)) {
-      # First remove everything after and including "Police Department Info"
-      police <- sub("Police Department Info.*$", "", police)
-      # Then clean any remaining whitespace
-      result$police_chief <- trimws(police)
-    }
-
-    fire <- safe_extract(page, "//td[b[text()='Fire Chief:']]/following-sibling::td")
-    if (!is.na(fire)) {
-      # First remove everything after and including "Fire Department Info"
-      fire <- sub("Fire Department Info.*$", "", fire)
-      # Then clean any remaining whitespace
-      result$fire_chief <- trimws(fire)
-    }
-
-    ems <- safe_extract(page, "//td[b[text()='EMS Agency:']]/following-sibling::td")
-    if (!is.na(ems)) {
-      result$ems_agency <- trimws(ems)
     }
 
     # Extract additional fields with corrected XPath selectors
@@ -171,35 +100,9 @@ scrape_municipality <- function(muni_id) {
       result$council_of_government <- trimws(gsub("\\s+", " ", cog))
     }
 
-    sanitary <- safe_extract(page, "//td[b[contains(text(), 'Sanitary Authority:')]]/following-sibling::td")
-    if (!is.na(sanitary)) {
-      result$sanitary_authority <- trimws(sanitary)
-    }
-
     square_miles <- safe_extract(page, "//td[b[text()='Square Miles:']]/following-sibling::td")
     if (!is.na(square_miles)) {
       result$square_miles <- as.numeric(gsub("[^0-9.]", "", square_miles))
-    }
-
-    # Update location extraction with exact XPath
-    location <- safe_extract(page, "/html/body/section/center/table/tbody/tr/td/div/table/tbody/tr[13]/td[2]")
-    if (!is.na(location)) {
-      result$location <- trimws(location)
-    }
-
-    # Update geography extraction with exact XPath
-    geography <- safe_extract(page, "/html/body/section/center/table/tbody/tr/td/div/p[3]")
-    if (!is.na(geography)) {
-      result$geography <- trimws(geography)
-    }
-
-    # Extract median property value and convert to number
-    median_value <- safe_extract(page, "//*[@id='no-more-tables']/h3[4]")
-    if (!is.na(median_value)) {
-      value <- gsub("[^0-9]", "", median_value)
-      if (value != "") {
-        result$median_property_value <- as.numeric(value)
-      }
     }
 
     # Clean up any remaining pipe characters and whitespace
@@ -271,40 +174,6 @@ municipality_names <- c(
   "Borough of Wilmerding"
 )
 
-#' Test the scraper on a small set of municipalities
-#' @param test_ids Vector of municipality IDs to test (default: c(1, 2, 3))
-#' @return Data frame of test results or NULL if all tests fail
-test_scraper <- function(test_ids = c(1, 2, 3)) {
-  cat("Testing scraper on municipalities:", paste(test_ids, collapse = ", "), "\n")
-
-  test_results <- list()
-
-  for (id in test_ids) {
-    cat("Testing municipality", id, "...\n")
-    result <- scrape_municipality(id)
-    if (!is.null(result)) {
-      test_results[[length(test_results) + 1]] <- result
-    }
-  }
-
-  # Convert to data frame and display
-  if (length(test_results) > 0) {
-    test_df <- bind_rows(test_results)
-    cat("\nTest Results:\n")
-    print(test_df)
-
-    # Check specific fields
-    cat("\nField extraction check:\n")
-    cat("Municipality names:", paste(test_df$municipality, collapse = ", "), "\n")
-    cat("School districts:", paste(test_df$school_district, collapse = ", "), "\n")
-
-    return(test_df)
-  } else {
-    cat("No results obtained from test.\n")
-    return(NULL)
-  }
-}
-
 #' Scrape data for all Allegheny County municipalities
 #' @return Data frame containing all municipal data
 scrape_all_municipalities <- function() {
@@ -333,7 +202,6 @@ scrape_all_municipalities <- function() {
   df <- bind_rows(all_results)
 
   # Add municipality code
-
   df <- df |>
   mutate(
     muni_code = case_when(
@@ -525,17 +393,20 @@ scrape_all_municipalities <- function() {
   return(df)
 }
 
-# Usage instructions
-cat("=== Allegheny County Municipal Data Scraper ===\n")
-cat("This script collects detailed information about Allegheny County municipalities\n")
-cat("including tax rates, property values, and municipal contacts.\n\n")
-cat("To test the scraper with a few municipalities:\n")
-cat("  test_results <- test_scraper(c(1, 2, 3))\n\n")
-cat("To scrape all municipalities (takes 2-3 minutes):\n")
-cat("  municipal_data <- scrape_all_municipalities()\n\n")
-cat("Note: The script includes a 1-second delay between requests\n")
-cat("to avoid overwhelming the county's server.\n")
-
 dat <- scrape_all_municipalities()
 
-write_csv(dat, here("data", "muni-profiles.csv"))
+lookup <- dat |>
+  select(
+    muni_code,
+    municipality,
+    school_district,
+    school_code,
+    county_council_district,
+    senatorial_district,
+    legislative_district,
+    congressional_district,
+    council_of_government,
+    square_miles
+  )
+
+write_csv(lookup, here("data", "muni-lookup.csv"))
