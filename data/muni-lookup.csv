@@ -1,63 +1,63 @@
-municipality,school_district,county_council_district
-Aleppo Township,QUAKER VALLEY,2
-Borough of Aspinwall,FOX CHAPEL AREA,3
-Borough of Avalon,NORTHGATE,1
-Borough of Baldwin,BALDWIN-WHITEHALL,6
-Baldwin Township,BALDWIN-WHITEHALL,6
-Borough of Bell Acres,QUAKER VALLEY,2
-Borough of Bellevue,NORTHGATE,13
-Borough of Ben Avon,AVONWORTH,1
-Borough of Ben Avon Hts.,AVONWORTH,1
-Municipality of Bethel Park,BETHEL PARK,5
-Borough of Blawnox,FOX CHAPEL AREA,7
-Borough of Brackenridge,HIGHLANDS,7
-Borough of Braddock,WOODLAND HILLS,8
-Borough of Braddock Hills,WOODLAND HILLS,10
-Borough of Bradford Woods,NORTH ALLEGHENY,2
-Borough of Brentwood,BRENTWOOD,6
-Borough of Bridgeville,CHARTIERS VALLEY,12
-Borough of Carnegie,CARLYNTON,4
-Borough of Castle Shannon,KEYSTONE OAKS,6
-Borough of Chalfant,WOODLAND HILLS,7
-Borough of Cheswick,ALLEGHENY VALLEY,7
-Borough of Churchill,WOODLAND HILLS,7
-City of Clairton,CLAIRTON,6
-Collier Township,CHARTIERS VALLEY,4
-Borough of Coraopolis,CORNELL,4
-Borough of Crafton,CARLYNTON,12
-Crescent Township,MOON AREA,1
-Borough of Dormont,KEYSTONE OAKS,5
-Borough of Dravosburg,MCKEESPORT AREA,9
-City of Duquesne,DUQUESNE AREA,9
-East Deer Township,DEER LAKES,7
-Borough of East McKeesport,EAST ALLEGHENY,8
-Borough of East Pittsburgh,WOODLAND HILLS,8
-Borough of Edgewood,WOODLAND HILLS,10
-Borough of Edgeworth,QUAKER VALLEY,2
-Borough of Elizabeth,ELIZABETH-FORWARD,9
-Elizabeth Township,ELIZABETH-FORWARD,9
-Borough of Emsworth,AVONWORTH,1
-Borough of Etna,SHALER AREA,3
-Fawn Township,HIGHLANDS,7
-Findlay Township,WEST ALLEGHENY,1
-Borough of Forest Hills,WOODLAND HILLS,10
-Forward Township,ELIZABETH-FORWARD,9
-Borough of Fox Chapel,FOX CHAPEL AREA,3
-Borough of Franklin Park,NORTH ALLEGHENY,2
-Frazer Township,DEER LAKES,7
-Borough of Glassport,SOUTH ALLEGHENY,9
-Borough of Glenfield,QUAKER VALLEY,1
-Borough of Green Tree,KEYSTONE OAKS,12
-Hampton Township,HAMPTON,3
-Harmar Township,ALLEGHENY VALLEY,7
-Harrison Township,HIGHLANDS,7
-Borough of Haysville,QUAKER VALLEY,1
-Borough of Heidelberg,CHARTIERS VALLEY,12
-Borough of Homestead,STEEL VALLEY,11
-Indiana Township,FOX CHAPEL AREA,3
-Borough of Ingram,MONTOUR,12
-Borough of Jefferson Hills,WEST JEFFERSON,6
-Borough of Whitehall,BALDWIN-WHITEHALL,6
-Wilkins Township,WOODLAND HILLS,7
-Borough of Wilkinsburg,WILKINSBURG,10
-Borough of Wilmerding,EAST ALLEGHENY,8
+muni_code,municipality,school_district,school_code,county_council_district
+901,Aleppo Township,QUAKER VALLEY,32,2
+801,Borough of Aspinwall,FOX CHAPEL AREA,17,3
+802,Borough of Avalon,NORTHGATE,29,1
+877,Borough of Baldwin,BALDWIN-WHITEHALL,4,6
+902,Baldwin Township,BALDWIN-WHITEHALL,4,6
+883,Borough of Bell Acres,QUAKER VALLEY,32,2
+803,Borough of Bellevue,NORTHGATE,29,13
+804,Borough of Ben Avon,AVONWORTH,2,1
+805,Borough of Ben Avon Hts.,AVONWORTH,2,1
+876,Municipality of Bethel Park,BETHEL PARK,5,5
+806,Borough of Blawnox,FOX CHAPEL AREA,17,7
+807,Borough of Brackenridge,HIGHLANDS,21,7
+808,Borough of Braddock,WOODLAND HILLS,9,8
+872,Borough of Braddock Hills,WOODLAND HILLS,9,10
+809,Borough of Bradford Woods,NORTH ALLEGHENY,27,2
+810,Borough of Brentwood,BRENTWOOD,6,6
+811,Borough of Bridgeville,CHARTIERS VALLEY,8,12
+812,Borough of Carnegie,CARLYNTON,7,4
+813,Borough of Castle Shannon,KEYSTONE OAKS,22,6
+814,Borough of Chalfant,WOODLAND HILLS,9,7
+815,Borough of Cheswick,ALLEGHENY VALLEY,1,7
+816,Borough of Churchill,WOODLAND HILLS,9,7
+200,City of Clairton,CLAIRTON,10,6
+905,Collier Township,CHARTIERS VALLEY,8,4
+817,Borough of Coraopolis,CORNELL,11,4
+818,Borough of Crafton,CARLYNTON,7,12
+906,Crescent Township,MOON AREA,25,1
+819,Borough of Dormont,KEYSTONE OAKS,22,5
+820,Borough of Dravosburg,MCKEESPORT AREA,23,9
+300,City of Duquesne,DUQUESNE AREA,13,9
+907,East Deer Township,DEER LAKES,12,7
+821,Borough of East McKeesport,EAST ALLEGHENY,14,8
+822,Borough of East Pittsburgh,WOODLAND HILLS,9,8
+823,Borough of Edgewood,WOODLAND HILLS,9,10
+824,Borough of Edgeworth,QUAKER VALLEY,32,2
+825,Borough of Elizabeth,ELIZABETH-FORWARD,16,9
+908,Elizabeth Township,ELIZABETH-FORWARD,16,9
+826,Borough of Emsworth,AVONWORTH,2,1
+827,Borough of Etna,SHALER AREA,34,3
+909,Fawn Township,HIGHLANDS,21,7
+910,Findlay Township,WEST ALLEGHENY,43,1
+828,Borough of Forest Hills,WOODLAND HILLS,9,10
+911,Forward Township,ELIZABETH-FORWARD,16,9
+868,Borough of Fox Chapel,FOX CHAPEL AREA,17,3
+884,Borough of Franklin Park,NORTH ALLEGHENY,27,2
+913,Frazer Township,DEER LAKES,12,7
+829,Borough of Glassport,SOUTH ALLEGHENY,35,9
+830,Borough of Glenfield,QUAKER VALLEY,32,1
+831,Borough of Green Tree,KEYSTONE OAKS,22,12
+914,Hampton Township,HAMPTON,20,3
+915,Harmar Township,ALLEGHENY VALLEY,1,7
+916,Harrison Township,HIGHLANDS,21,7
+832,Borough of Haysville,QUAKER VALLEY,32,1
+833,Borough of Heidelberg,CHARTIERS VALLEY,8,12
+834,Borough of Homestead,STEEL VALLEY,38,11
+917,Indiana Township,FOX CHAPEL AREA,17,3
+835,Borough of Ingram,MONTOUR,24,12
+878,Borough of Jefferson Hills,WEST JEFFERSON,44,6
+874,Borough of Whitehall,BALDWIN-WHITEHALL,4,6
+953,Wilkins Township,WOODLAND HILLS,9,7
+866,Borough of Wilkinsburg,WILKINSBURG,46,10
+867,Borough of Wilmerding,EAST ALLEGHENY,14,8
