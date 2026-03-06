@@ -398,15 +398,8 @@ dat <- scrape_all_municipalities()
 lookup <- dat |>
   select(
     municipality,
-    muni_code,
     school_district,
-    school_code,
-    county_council_district,
-    senatorial_district,
-    legislative_district,
-    congressional_district,
-    council_of_government,
-    square_miles
+    county_council_district
   )
 
 write_csv(lookup, here("data", "muni-lookup.csv"))
